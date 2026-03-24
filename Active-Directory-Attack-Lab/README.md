@@ -1,6 +1,7 @@
 # 🔴 Active Directory Attack Lab – End-to-End Attack Simulation
 
 ## 📌 Overview
+
 This project simulates a real-world Active Directory compromise in a controlled lab environment.  
 
 The objective was to replicate a full attack lifecycle — from initial access to domain dominance — while also analyzing detection opportunities through centralized logging (Sysmon + Splunk).
@@ -18,6 +19,7 @@ The environment reflects common real-world challenges such as rapid scaling, wea
 ---
 
 ## 🎯 Objectives
+
 - Simulate common enterprise attack techniques
 - Perform credential harvesting and abuse
 - Achieve lateral movement across systems
@@ -29,12 +31,14 @@ The environment reflects common real-world challenges such as rapid scaling, wea
 ## 🏗️ Lab Environment
 
 ### 🖥️ Infrastructure
+
 - **Domain Controller:** Windows Server 2022 (SOLARIS-DC-01)
 - **Client Machine:** Windows 11 (SOLARIS-PC-01)
 - **Attacker Machine:** Kali Linux
 - **SIEM Server:** Ubuntu (Splunk + Sysmon ingestion)
 
 ### 🌐 Network
+
 - Domain: `solaris.local`
 - Internal IP Range: `192.168.10.0/24`
 
@@ -43,22 +47,30 @@ The environment reflects common real-world challenges such as rapid scaling, wea
 ## ⚙️ Environment Configuration
 
 ### 🔧 Active Directory Setup
+
 - Domain created: `solaris.local`
 - Automated provisioning via PowerShell (`provision.ps1`)
-- Organizational Units:
-  - 01-Management
-  - 02-Creative
-  - 03-Finance
-  - 04-IT
+
+Organizational Units (OUs):
+
+- 01-Executives
+- 02-Creative
+- 03-Finance
+- 04-IT-Admin
+- 05-Service-Accounts
+
+Provisioning was performed via a PowerShell script to simulate scalable enterprise deployment rather than manual configuration.
 
 ### 👥 User Simulation
-- 13+ domain users created automatically
-- Realistic attributes (department, role, descriptions)
-- Default password policy: Solaris2026!
 
-⚠️ Simulates weak enterprise credential practices
+- 9 domain users created via PowerShell automation
+- Realistic attributes (department, role, descriptions)
+- Multiple password patterns used (e.g., `Solaris2026!`, `AdminSolaris!`, `Backup123!`)
+
+⚠️ Simulates weak and inconsistent enterprise credential practices
 
 ### 🔗 Domain Integration
+
 - Windows 11 machine joined to domain
 - Users mapped to appropriate groups
 
@@ -122,6 +134,13 @@ Executed remote commands on target machines.
 Extracted high-privileged credentials from memory.
 
 > "Dumped credentials from LSASS and escalated privileges."
+
+---
+
+## Phase 6: Kerberoasting (Planned / In Progress)
+Identify service accounts with Service Principal Names (SPNs) and extract Kerberos tickets for offline cracking.
+
+> "Targeted service accounts to obtain crackable Kerberos tickets and escalate privileges."
 
 ---
 
