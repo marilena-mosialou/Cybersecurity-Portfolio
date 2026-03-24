@@ -11,24 +11,51 @@ This repository showcases hands-on cybersecurity labs and real-world attack simu
 - Phishing Analysis
 
 ## 🧰 Tools & Technologies
-- Windows Server / Active Directory
+
+**Operating Systems:**
+- Windows Server
 - Kali Linux
+
+**Security Tools:**
 - Wireshark
-- Splunk / ELK
-- Nessus / OpenVAS
 - Burp Suite
+- Nessus / OpenVAS
+- BloodHound
+- Mimikatz
+- Impacket
+
+**SIEM & Logging:**
+- Splunk / ELK Stack
+
+**Scripting:**
 - PowerShell
+- Bash
 
 ## 📂 Projects
 
-| Project | Description |
-|--------|------------|
-| Active Directory Attack Lab | Simulating real-world AD attacks (Kerberoasting, Pass-the-Hash, etc.) |
-| SOC Incident Investigation | Log analysis and incident response scenario |
-| Network Traffic Analysis | Packet capture and threat detection |
-| Vulnerability Scanning Lab | Identifying and analyzing system vulnerabilities |
-| Web App Security Testing | Testing for OWASP Top 10 vulnerabilities |
-| Phishing Email Analysis | Detecting and analyzing phishing attempts |
+### 🔴 Active Directory Attack Lab
+Simulating real-world Active Directory attacks including privilege escalation and credential abuse.  
+➡️ [View Project](./Active-Directory-Attack-Lab)
+
+### 🟡 SOC Incident Investigation
+Investigating security events using logs and identifying malicious activity.  
+➡️ [View Project](./SOC-Incident-Investigation)
+
+### 🔵 Network Traffic Analysis
+Analyzing packet captures to detect suspicious behavior.  
+➡️ [View Project](./Network-Traffic-Analysis)
+
+### 🟠 Vulnerability Scanning Lab
+Identifying and analyzing vulnerabilities using scanning tools.  
+➡️ [View Project](./Vulnerability-Scanning-Lab)
+
+### 🟣 Web App Security Testing
+Testing applications against OWASP Top 10 vulnerabilities.  
+➡️ [View Project](./Web-App-Security-Testing)
+
+### ⚪ Phishing Email Analysis
+Analyzing phishing emails and identifying indicators of compromise.  
+➡️ [View Project](./Phishing-Email-Analysis)
 
 ---
 
@@ -36,6 +63,13 @@ This repository showcases hands-on cybersecurity labs and real-world attack simu
 To demonstrate practical, job-ready cybersecurity skills through hands-on labs and documented attack scenarios.
 
 ---
+
+## 🚀 What Makes This Portfolio Different
+
+- Focus on both **offensive (attacks)** and **defensive (detection & mitigation)** techniques
+- Includes **real-world attack simulations** in controlled lab environments
+- Emphasis on **log analysis and detection strategies**
+- Detailed documentation with **step-by-step execution and screenshots**
 
 ## 📫 Contact
 - LinkedIn: link
