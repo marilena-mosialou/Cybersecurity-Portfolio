@@ -116,9 +116,9 @@ Captured NTLMv2 hash via LLMNR/NBT-NS poisoning attack.
 
 ### 📸 Evidence
 
-- Responder poisoning activity (LLMNR/NBT-NS responses)
-- Captured NTLMv2 hash output
-- SMB authentication trigger from victim machine
+![Responder poisoning activity (LLMNR/NBT-NS responses)](screenshots/phase1/phase1-responder-configuration.png)
+![Captured NTLMv2 hash output](screenshots/phase1/phase1-ntlmv2-hash-capture.png)
+![SMB authentication trigger from victim machine](screenshots/phase1/phase1-smb-trigger.png)
 
 ---
 
