@@ -103,9 +103,22 @@ To simulate real-world weaknesses:
 # ⚔️ Attack Simulation
 
 ## Phase 1: Initial Foothold (Responder)
-Captured NTLM hash via LLMNR poisoning.
+Captured NTLMv2 hash via LLMNR/NBT-NS poisoning attack.
 
-> "Intercepted broadcast traffic and obtained user authentication hash."
+- Verified LLMNR and NetBIOS were enabled on the target system
+- Configured Responder to intercept SMB authentication requests
+- Forced authentication from domain user using SMB share request
+- Successfully captured NTLMv2 hash for SOLARIS\p.olson
+
+> "Intercepted broadcast name resolution traffic and captured NTLMv2 authentication hash via rogue SMB response."
+
+---
+
+### 📸 Evidence
+
+- Responder poisoning activity (LLMNR/NBT-NS responses)
+- Captured NTLMv2 hash output
+- SMB authentication trigger from victim machine
 
 ---
 
@@ -147,7 +160,7 @@ Identify service accounts with Service Principal Names (SPNs) and extract Kerber
 # 🔍 Detection & Analysis
 
 ### Key Indicators of Compromise (IOCs)
-- Abnormal NTLM authentication traffic
+- Abnormal NTLMv2 authentication traffic
 - Multiple failed login attempts (password spraying)
 - Suspicious process creation (Mimikatz)
 - Remote execution events
