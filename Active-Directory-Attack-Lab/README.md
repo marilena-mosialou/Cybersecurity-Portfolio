@@ -130,11 +130,11 @@ Attempted offline password cracking using Hashcat and a common wordlist.
 
 > "Password was not present in common wordlists, indicating stronger or non-standard credential usage."
 
-Pivoted to credential validation techniques.
+Pivoted to credential validation techniques after unsuccessful password cracking.
 
 - Tested captured credentials across internal network using CrackMapExec
-- Successfully authenticated to domain systems using identified password pattern (Solaris2026!)
-- Confirmed password reuse across multiple hosts
+- Successfully authenticated to domain systems using a weak, predictable password (Solaris2026!)
+- Confirmed that compromised credentials provide access within the domain environment
 
 > "Validated that compromised credentials could be used for authentication across domain systems, enabling lateral movement."
 
@@ -145,7 +145,6 @@ Pivoted to credential validation techniques.
 <img src="screenshots/phase2/phase2-cme-installation.png" width="700">
 
 <img src="screenshots/phase2/phase2-credential-validation-success.png" width="700">
-
 
 ---
 
