@@ -112,13 +112,11 @@ Captured NTLMv2 hash via LLMNR/NBT-NS poisoning attack.
 
 > "Intercepted broadcast name resolution traffic and captured NTLMv2 authentication hash via rogue SMB response."
 
----
-
 ### 📸 Evidence
 
-![Responder poisoning activity (LLMNR/NBT-NS responses)](screenshots/phase1/phase1-responder-configuration.png)
-![Captured NTLMv2 hash output](screenshots/phase1/phase1-ntlmv2-hash-capture.png)
-![SMB authentication trigger from victim machine](screenshots/phase1/phase1-smb-trigger.png)
+<img src="screenshots/phase1/phase1-ntlmv2-hash-capture.png" width="700">
+
+[View SMB authentication trigger](screenshots/phase1/phase1-smb-trigger.png)
 
 ---
 
