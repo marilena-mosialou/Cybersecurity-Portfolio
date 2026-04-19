@@ -121,9 +121,31 @@ Captured NTLMv2 hash via LLMNR/NBT-NS poisoning attack.
 ---
 
 ## Phase 2: Credential Validation (CrackMapExec)
-Validated captured credentials across domain systems.
 
-> "Confirmed password reuse across multiple systems."
+Attempted offline password cracking using Hashcat and a common wordlist.
+
+- Extracted NTLMv2 hash from Responder output
+- Executed dictionary attack using rockyou.txt
+- Attack completed but no valid password was recovered
+
+> "Password was not present in common wordlists, indicating stronger or non-standard credential usage."
+
+Pivoted to credential validation techniques.
+
+- Tested captured credentials across internal network using CrackMapExec
+- Successfully authenticated to domain systems using identified password pattern (Solaris2026!)
+- Confirmed password reuse across multiple hosts
+
+> "Validated that compromised credentials could be used for authentication across domain systems, enabling lateral movement."
+
+### 📸 Evidence
+
+<img src="screenshots/phase2/phase2-hashcat-failed-crack.png" width="700">
+
+<img src="screenshots/phase2/phase2-cme-installation.png" width="700">
+
+<img src="screenshots/phase2/phase2-credential-validation-success.png" width="700">
+
 
 ---
 
