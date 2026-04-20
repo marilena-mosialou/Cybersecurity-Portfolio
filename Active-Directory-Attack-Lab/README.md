@@ -157,7 +157,7 @@ Mapped Active Directory relationships and attack paths.
 
 ## Phase 4: Lateral Movement (Impacket)
 
-Attempted remote command execution using validated domain credentials.
+Attempted remote command execution using previously validated domain credentials.
 
 - Used Impacket psexec to attempt remote execution over SMB
 - Authentication succeeded but access to administrative shares (ADMIN$, C$) was denied
