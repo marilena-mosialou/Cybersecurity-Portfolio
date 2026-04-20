@@ -156,9 +156,29 @@ Mapped Active Directory relationships and attack paths.
 ---
 
 ## Phase 4: Lateral Movement (Impacket)
-Executed remote commands on target machines.
 
-> "Leveraged valid credentials to gain remote access."
+Attempted remote command execution using validated domain credentials.
+
+- Used Impacket psexec to attempt remote execution over SMB
+- Authentication succeeded but access to administrative shares (ADMIN$, C$) was denied
+
+> "Valid credentials did not grant sufficient privileges for remote service creation."
+
+- Attempted alternative execution method using wmiexec
+- Received RPC access denied response
+
+> "User lacked necessary privileges for remote command execution via WMI."
+
+Conclusion:
+
+- Confirmed that while credentials are valid, the compromised account does not have administrative privileges on the target system
+- Demonstrated enforcement of privilege boundaries within the domain environment
+
+### 📸 Evidence
+
+<img src="screenshots/phase4/phase4-psexec-access-denied.png" width="700">
+
+<img src="screenshots/phase4/phase4-wmiexec-access-denied.png" width="700">
 
 ---
 
