@@ -149,10 +149,48 @@ Pivoted to credential validation techniques after unsuccessful password cracking
 ---
 
 ## Phase 3: Domain Enumeration (BloodHound)
-Mapped Active Directory relationships and attack paths.
+Mapped Active Directory relationships and analyzed potential attack paths.
 
-> "Identified shortest path to Domain Admin through misconfigured privileges."
+> "Enumerated domain objects and confirmed absence of direct privilege escalation paths."
 
+- Configured attacker DNS to use Domain Controller for proper AD resolution
+- Executed BloodHound data collection using compromised domain credentials
+- Successfully enumerated users, groups, computers, and domain structure
+- Imported collected data into BloodHound for analysis
+- Identified compromised user `p.olson@solaris.local` as member of:
+  - `Domain Users`
+  - `Users`
+
+> "Compromised account operates with standard domain user privileges."
+
+- Analyzed object permissions and identified inbound control relationships:
+  - GenericWrite
+  - WriteDacl
+  - AddKeyCredentialLink
+
+> "Identified inbound ACL relationships that may enable privilege abuse under specific conditions."
+
+- Performed pathfinding analysis to Domain Admins
+- No valid privilege escalation path identified
+
+> "No direct privilege escalation path to Domain Admins found."
+
+Conclusion:
+
+- Confirmed that the compromised account has limited privileges within the domain
+- No misconfigurations allowing immediate escalation were identified
+- Demonstrated that enumeration is critical to validate attack paths before exploitation
+- Established need for lateral movement and post-exploitation techniques for further compromise
+
+### 📸 Evidence
+
+<img src="screenshots/phase3/phase3-collection-success.png" width="700"> 
+
+<img src="screenshots/phase3/phase3-user-membership.png" width="700"> 
+
+<img src="screenshots/phase3/phase3-inbound-control.png" width="700"> 
+
+<img src="screenshots/phase3/phase3-no-path-to-da.png" width="700">
 ---
 
 ## Phase 4: Lateral Movement (Impacket)
