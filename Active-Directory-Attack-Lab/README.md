@@ -94,9 +94,9 @@ To simulate real-world weaknesses:
 - Sysmon deployed on endpoints
 - Logs forwarded to Splunk server
 - Enables detection of:
-- Credential dumping
-- Lateral movement
-- Suspicious authentication patterns
+  - Credential dumping
+  - Lateral movement
+  - Suspicious authentication patterns
 
 ---
 
@@ -220,10 +220,51 @@ Conclusion:
 
 ---
 
-## Phase 5: Privilege Escalation (Mimikatz / PowerView)
-Extracted high-privileged credentials from memory.
+## Phase 5: Credential Dumping (LSASS Memory Analysis)
 
-> "Dumped credentials from LSASS and escalated privileges."
+Attempted credential extraction from LSASS memory after identifying lack of direct privilege escalation paths.
+
+> "Initial LSASS dump did not reveal usable credentials, indicating absence of active authentication material."
+
+- Executed LSASS memory dump using ProcDump on the target machine
+- Transferred dump file to attacker machine for offline analysis
+- Parsed memory dump using pypykatz
+
+> "Only DPAPI-related material was recovered, suggesting no cached credentials were present."
+
+Pivoted strategy to force authentication:
+
+- Triggered SMB authentication using valid domain credentials
+- Generated a new logon session (network authentication)
+- Created a second LSASS dump after authentication event
+
+> "Authentication activity caused credentials to be stored in LSASS memory."
+
+- Re-analyzed updated memory dump using pypykatz
+- Successfully extracted high-privileged credentials
+
+> "Recovered Administrator credentials including NTLM hash and cleartext password."
+
+### 🔑 Extracted Credentials
+
+- Username: Administrator
+- Domain: SOLARIS
+- NTLM Hash: cf5ada20039b287784039a7b266d3c08
+- Cleartext Password: (3vRPShicosHuyAv
+
+### 🎯 Impact
+
+- Demonstrates how attackers can extract credentials post-authentication
+- Enables lateral movement using valid credentials or pass-the-hash techniques
+- Highlights risk of credential exposure in memory on active systems
+
+### 📸 Evidence
+
+<img src="screenshots/phase5/phase5-lsass-dump-success.png" width="700">
+
+<img src="screenshots/phase5/phase5-smb-authentication.png" width="700">
+
+<img src="screenshots/phase5/phase5-pypykatz-credential-extraction.png" width="700">
 
 ---
 
