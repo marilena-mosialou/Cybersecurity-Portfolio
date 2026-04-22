@@ -268,10 +268,38 @@ Pivoted strategy to force authentication:
 
 ---
 
-## Phase 6: Kerberoasting (Planned / In Progress)
-Identify service accounts with Service Principal Names (SPNs) and extract Kerberos tickets for offline cracking.
+## Phase 6: Lateral Movement via SMB (Administrative Share Access)
 
-> "Targeted service accounts to obtain crackable Kerberos tickets and escalate privileges."
+Leveraged extracted Administrator credentials to access the Domain Controller and validate lateral movement.
+
+> "Valid credentials enabled authenticated access to remote administrative resources."
+
+- Authenticated to Domain Controller via SMB using Administrator credentials
+- Accessed default administrative share (C$)
+- Established direct interaction with remote file system
+
+> "Administrative share access confirms high-privilege authentication on the target system."
+
+- Navigated to sensitive system directories
+- Accessed Windows registry hive storage location
+
+> "Presence of registry hive files indicates full administrative access to the system."
+
+- Verified access to credential storage files (SAM, SYSTEM, SECURITY)
+- Confirmed ability to interact with protected OS components
+
+> "Access to these files enables credential extraction and full system compromise."
+
+### 🎯 Impact
+
+- Demonstrates successful lateral movement to Domain Controller  
+- Confirms administrative-level access on a critical system  
+- Enables potential credential extraction and privilege escalation  
+- Represents full compromise of the Active Directory environment  
+
+### 📸 Evidence
+
+<img src="screenshots/phase6/phase6-admin-share-sensitive-access.png" width="700">
 
 ---
 
