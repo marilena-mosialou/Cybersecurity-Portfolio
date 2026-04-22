@@ -193,7 +193,7 @@ Conclusion:
 <img src="screenshots/phase3/phase3-no-path-to-da.png" width="700">
 ---
 
-## Phase 4: Lateral Movement (Impacket)
+## Phase 4: Lateral Movement Attempt (Impacket)
 
 Attempted remote command execution using previously validated domain credentials.
 
@@ -268,7 +268,7 @@ Pivoted strategy to force authentication:
 
 ---
 
-## Phase 6: Lateral Movement via SMB (Administrative Share Access)
+## Phase 6: Successful Lateral Movement via SMB (Administrative Share Access)
 
 Leveraged extracted Administrator credentials to access the Domain Controller and validate lateral movement.
 
