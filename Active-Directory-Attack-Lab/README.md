@@ -302,6 +302,53 @@ Leveraged extracted Administrator credentials to access the Domain Controller an
 <img src="screenshots/phase6/phase6-admin-share-sensitive-access.png" width="700">
 
 ---
+## Phase 7: Kerberoasting (Service Account Credential Extraction)
+
+Performed Kerberoasting attack against service accounts configured with Service Principal Names (SPNs).
+
+> "Identified service account with SPN configured, making it a viable Kerberoasting target."
+
+- Enumerated SPNs using Impacket
+- Identified `svc_backup` as a service account with SPN
+- Confirmed account membership in Backup Operators
+
+> "Service account exposure allows extraction of Kerberos service tickets for offline cracking."
+
+- Requested Kerberos service ticket (TGS) for the target account
+- Extracted encrypted ticket hash for offline analysis
+
+> "Kerberos TGS hash successfully obtained for svc_backup."
+
+- Attempted password cracking using standard wordlist (rockyou)
+- Initial attempt failed due to wordlist mismatch
+
+> "Default wordlist did not contain the target password."
+
+- Switched to targeted/custom wordlist
+- Successfully cracked Kerberos hash using John the Ripper
+
+> "Recovered cleartext password for service account."
+
+### 🔑 Extracted Credentials
+
+- Username: svc_backup
+- Domain: SOLARIS
+- Cleartext Password: Backup123!
+
+### 🎯 Impact
+
+- Demonstrates risk of weak passwords in service accounts with SPNs
+- Enables offline password cracking without further interaction with target
+- Provides additional foothold for privilege escalation and lateral movement
+- Highlights how misconfigured service accounts expand attack surface
+
+### 📸 Evidence
+
+<img src="screenshots/phase7/phase7-spn-enumeration.png" width="700">
+<img src="screenshots/phase7/phase7-kerberoast-hash.png" width="700">
+<img src="screenshots/phase7/phase7-john-crack-success.png" width="700">
+
+---
 
 # 🔍 Detection & Analysis
 
