@@ -348,6 +348,57 @@ Performed Kerberoasting attack against service accounts configured with Service 
 <img src="screenshots/phase7/phase7-kerberoast-hash.png" width="700">
 <img src="screenshots/phase7/phase7-john-crack-success.png" width="700">
 
+### ⚠️ Privilege Escalation Attempt (Backup Operators Abuse)
+
+Attempted to leverage `svc_backup` membership in Backup Operators group to extract domain data via Volume Shadow Copy (VSS).
+
+> "Backup Operators possess privileges to read sensitive system files, including NTDS.dit."
+
+- Attempted remote NTDS extraction using Impacket secretsdump
+- DRSUAPI method failed due to insufficient privileges
+- VSS method also restricted due to lack of remote execution capabilities
+
+> "Backup Operators privileges alone were insufficient for remote exploitation in this configuration."
+
+Pivoted strategy:
+
+- Leveraged previously obtained Administrator credentials
+- Proceeded with domain extraction using high-privileged access
+
+---
+## Phase 8: Domain Compromise (NTDS.dit Extraction)
+
+Achieved full Active Directory compromise by extracting domain credentials from the Domain Controller using previously obtained high-privileged access.
+
+> "High-privileged credentials enabled direct access to the Active Directory database."
+
+- Leveraged Administrator credentials obtained from LSASS memory dumping
+- Authenticated to Domain Controller remotely
+- Executed NTDS.dit extraction using Impacket secretsdump
+
+> "Successful extraction of NTDS.dit provided access to all domain user credential hashes."
+
+- Dumped domain credential database (NTDS.dit)
+- Extracted NTLM password hashes for all domain users
+- Retrieved sensitive accounts including Administrator and krbtgt
+
+> "Compromise of krbtgt account enables potential Golden Ticket attacks and persistent domain access."
+
+- Obtained Kerberos encryption keys (AES/RC4)
+- Confirmed full visibility of Active Directory user base
+
+### 🎯 Impact
+
+- Demonstrates complete compromise of Active Directory environment
+- Provides access to all domain user credentials
+- Enables privilege escalation, lateral movement, and persistence
+- Allows potential Kerberos ticket forging (Golden Ticket attacks)
+
+### 📸 Evidence
+
+<img src="screenshots/phase8/phase8-secretsdump-execution.png" width="700">
+<img src="screenshots/phase8/phase8-domain-hashes.png" width="700">
+
 ---
 
 # 🔍 Detection & Analysis
