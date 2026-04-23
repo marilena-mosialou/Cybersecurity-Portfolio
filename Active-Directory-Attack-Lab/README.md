@@ -2,29 +2,35 @@
 
 ## 📌 Overview
 
-This project simulates a real-world Active Directory compromise in a controlled lab environment.  
+This project simulates a full Active Directory compromise in a controlled lab environment, replicating a realistic attack chain from initial access to domain dominance.
 
-The objective was to replicate a full attack lifecycle — from initial access to domain dominance — while also analyzing detection opportunities through centralized logging (Sysmon + Splunk).
+The lab focuses on offensive techniques including credential harvesting, lateral movement, Kerberoasting, and domain credential extraction, while also highlighting detection opportunities through centralized logging (Sysmon + Splunk).
+
+The goal is to demonstrate both attacker methodology and defensive visibility within an enterprise network.
 
 ---
 
 ## 🏢 Scenario
 
-This lab simulates a fictional company, **Solaris Creative**, a fast-growing digital agency managing sensitive client data.
+This lab represents a mid-sized enterprise environment (**Solaris Creative**) with a centralized Active Directory infrastructure.
 
-As the organization's Security Engineer, the objective was to design, deploy, and assess the security of a centralized Active Directory environment, while monitoring activity through Splunk.
+The environment includes typical enterprise characteristics such as:
+- Multiple user roles and departments
+- Service accounts with elevated privileges
+- Weak password practices
+- Misconfigured access controls
 
-The environment reflects common real-world challenges such as rapid scaling, weak credential practices, and misconfigured access controls.
+The objective is to identify and exploit these weaknesses to achieve full domain compromise.
 
 ---
 
 ## 🎯 Objectives
 
-- Simulate common enterprise attack techniques
+- Simulate real-world Active Directory attack techniques
 - Perform credential harvesting and abuse
-- Achieve lateral movement across systems
-- Escalate privileges to Domain Admin
-- Analyze logs and identify detection opportunities
+- Achieve lateral movement across domain systems
+- Escalate privileges to Domain Admin level
+- Identify detection opportunities through log analysis
 
 ---
 
@@ -93,10 +99,13 @@ To simulate real-world weaknesses:
 
 - Sysmon deployed on endpoints
 - Logs forwarded to Splunk server
-- Enables detection of:
-  - Credential dumping
-  - Lateral movement
-  - Suspicious authentication patterns
+
+This setup enables basic visibility into:
+- Authentication events
+- Process creation
+- Lateral movement activity
+
+Detailed detection analysis will be explored in a separate SOC-focused project.
 
 ---
 
@@ -115,8 +124,7 @@ Captured NTLMv2 hash via LLMNR/NBT-NS poisoning attack.
 ### 📸 Evidence
 
 <img src="screenshots/phase1/phase1-ntlmv2-hash-capture.png" width="700">
-
-[View SMB authentication trigger](screenshots/phase1/phase1-smb-trigger.png)
+<img src="screenshots/phase1/phase1-smb-trigger.png" width="700">
 
 ---
 
@@ -242,6 +250,8 @@ Pivoted strategy to force authentication:
 
 - Re-analyzed updated memory dump using pypykatz
 - Successfully extracted high-privileged credentials
+
+> "Administrator credentials were present in LSASS due to active or recent authentication activity."
 
 > "Recovered Administrator credentials including NTLM hash and cleartext password."
 
@@ -401,58 +411,55 @@ Achieved full Active Directory compromise by extracting domain credentials from 
 
 ---
 
-# 🔍 Detection & Analysis
+# 🔍 Detection Considerations
 
-### Key Indicators of Compromise (IOCs)
-- Abnormal NTLMv2 authentication traffic
-- Multiple failed login attempts (password spraying)
-- Suspicious process creation (Mimikatz)
-- Remote execution events
+Key observable behaviors during the attack chain include:
 
-### Example Logs
-- Event ID 4624 (Logon)
-- Event ID 4625 (Failed logon)
+- LLMNR/NBT-NS poisoning activity (Responder)
+- Abnormal authentication patterns across hosts
+- LSASS memory access (credential dumping)
+- Remote SMB access to administrative shares
+- Kerberos service ticket requests (Kerberoasting)
+
+Relevant logs:
+
+- Windows Event ID 4624 / 4625 (Authentication)
 - Sysmon Event ID 1 (Process creation)
 - Sysmon Event ID 10 (Process access)
+
+> Full detection engineering and log analysis will be covered in a dedicated SOC project.
 
 ---
 
 # 🛡️ Mitigation Strategies
 
-- Disable LLMNR & NetBIOS
-- Enforce strong password policies
-- Implement least privilege access
-- Restrict SMB share permissions
-- Monitor authentication anomalies
-- Enable Defender / EDR protections
+- Disable LLMNR & NetBIOS to prevent poisoning attacks
+- Enforce strong password policies and account lockouts
+- Apply least privilege principles across user and service accounts
+- Restrict access to administrative SMB shares
+- Monitor authentication anomalies and lateral movement patterns
+- Enable endpoint protection (Defender / EDR)
 
 ---
 
 # 🧠 Lessons Learned
 
-- Weak credentials remain a critical entry point
-- Misconfigured privileges enable rapid escalation
-- Visibility (logging) is essential for detection
-- Attack paths in AD are often non-obvious without tools like BloodHound
-
----
-
-# 📸 Screenshots
-
-- Lab architecture diagram
-- AD user structure
-- PowerShell automation output
-- Sysmon installation
-- Attack execution evidence
+- Valid credentials do not always imply sufficient privilege for exploitation
+- Credential exposure in memory can enable rapid privilege escalation
+- Service accounts with SPNs significantly increase attack surface
+- Multiple attack paths may fail, requiring adaptive strategy
+- Full domain compromise is often achieved through chaining techniques, not a single vulnerability
 
 ---
 
 # 🚀 Key Takeaways
 
-This lab demonstrates the ability to:
-- Build and secure an AD environment
-- Simulate real-world attack techniques
-- Analyze attacker behavior through logs
-- Understand both offensive and defensive perspectives
+This project demonstrates:
+
+- End-to-end Active Directory attack simulation
+- Realistic attacker decision-making and pivoting
+- Practical use of industry tools (Impacket, BloodHound, Responder, John)
+- Ability to identify and exploit misconfigurations in enterprise environments
+- Understanding of both offensive techniques and defensive visibility
 
 ---
