@@ -55,7 +55,7 @@ Testing applications against OWASP Top 10 vulnerabilities.
 
 ### ⚪ Email Threat Analysis Lab
 Investigating real-world email threats including phishing and business email compromise (BEC), using header analysis, domain validation, and threat intelligence tools to identify indicators of compromise and assess risk.  
-➡️ [View Project](./Email-Threat-Analysis-Lab)
+➡️ [View Project](./Email-Security-Incident-Analysis)
 
 ---
 
