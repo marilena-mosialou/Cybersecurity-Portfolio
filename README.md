@@ -53,9 +53,9 @@ Identifying and analyzing vulnerabilities using scanning tools.
 Testing applications against OWASP Top 10 vulnerabilities.  
 ➡️ [View Project](./Web-App-Security-Testing)
 
-### ⚪ Phishing Email Analysis
-Analyzing phishing emails and identifying indicators of compromise.  
-➡️ [View Project](./Phishing-Email-Analysis)
+### ⚪ Email Threat Analysis Lab
+Investigating real-world email threats including phishing and business email compromise (BEC), using header analysis, domain validation, and threat intelligence tools to identify indicators of compromise and assess risk.  
+➡️ [View Project](./Email-Threat-Analysis-Lab)
 
 ---
 
