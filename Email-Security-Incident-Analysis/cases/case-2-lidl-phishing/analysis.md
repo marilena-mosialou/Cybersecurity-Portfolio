@@ -4,8 +4,8 @@
 
 ## 🧾 Step 1 — Initial Triage
 
-**Subject:** marimboulaki - έχετε κερδίσει ένα Σετ Parkside 3 Τεμαχίων 🎁ID#109891  
-*(marimboulaki - you have won a Parkside 3 Piece Set 🎁ID#109891)*  
+**Subject:** mari... - έχετε κερδίσει ένα Σετ Parkside 3 Τεμαχίων 🎁ID#109891  
+*(mari... - you have won a Parkside 3 Piece Set 🎁ID#109891)*  
 
 **Sender:** info@xwrvndlxgx.checklipsteck.com.tr  
 **Spam classification:** Classified as spam by Gmail  
