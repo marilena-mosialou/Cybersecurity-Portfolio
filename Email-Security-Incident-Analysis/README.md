@@ -1,13 +1,9 @@
 # 📧 Email Security Incident Analysis
 
 **Analyst Summary:**  
-Investigated three real-world email scenarios (legitimate, phishing, and BEC) to identify indicators of compromise, validate infrastructure, and assess risk using SOC-level methodology.
+Investigated three email scenarios (legitimate, phishing, and BEC) to identify indicators of compromise, validate infrastructure, and assess risk using a structured SOC investigation methodology.
 
-A hands-on cybersecurity project simulating real-world email threat investigations.
-
-This project focuses on identifying phishing attacks, validating legitimate communications, and analyzing Business Email Compromise (BEC) scenarios.
-
-The goal is to demonstrate a structured SOC analyst workflow, combining technical analysis with contextual reasoning to assess email legitimacy and risk.
+This project demonstrates how email threats are analyzed in real-world environments, combining technical validation with contextual reasoning to accurately determine legitimacy and risk.
 
 ---
 
