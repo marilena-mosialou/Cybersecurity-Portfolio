@@ -31,12 +31,24 @@ This methodology reflects real-world incident response workflows and prioritizes
 ---
 
 ## 📁 Project Structure
+
 Email-Security-Incident-Analysis/
 │
 ├── cases/
 │ ├── case-1-meta-legitimate/
+│ │ ├── analysis.md
+│ │ ├── verdict.md
+│ │ └── evidence/
+│ │
 │ ├── case-2-lidl-phishing/
+│ │ ├── analysis.md
+│ │ ├── verdict.md
+│ │ └── evidence/
+│ │
 │ └── case-3-bec-attack/
+│ ├── analysis.md
+│ ├── verdict.md
+│ └── evidence/
 │
 ├── methodology/
 │ └── investigation-process.md
