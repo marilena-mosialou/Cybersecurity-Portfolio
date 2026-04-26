@@ -57,7 +57,7 @@ The domain uses Cloudflare name servers, which, while legitimate, are frequently
 
 Based on domain characteristics, registration details, and lack of association with Lidl, the domain is highly likely to be malicious and part of a phishing campaign.  
 
-Additionally, the domain name structure appears irregular and unrelated to Lidl’s official branding, which may indicate typosquatting or deceptive domain naming techniques commonly used in phishing campaigns.
+Additionally, the domain name structure appears irregular and unrelated to Lidl’s official branding, which indicates deceptive domain naming or typosquatting techniques commonly used in phishing campaigns.
 
 ---
 
