@@ -1,0 +1,30 @@
+--- SIMULATED EMAIL (FOR EDUCATIONAL PURPOSES) ---
+
+Return-Path: <john.k@company-corp.com>
+Received: from mail.company-corp.com (mail.company-corp.com [185.199.110.153])
+    by mx.google.com with ESMTPS id abc123xyz
+    for <finance@company.com>;
+    Mon, 10 Mar 2026 09:15:25 +0000
+Message-ID: <a1b2c3d4e5f6@company-corp.com>
+Date: Mon, 10 Mar 2026 09:15:22 +0000
+From: John K. <john.k@company-corp.com>
+To: finance@company.com
+Subject: Urgent: Payment Required Today
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+
+Hi,
+
+I’m currently in a meeting and won’t be available for calls.
+
+We need to process an urgent payment of €2,450 to a new vendor today. This is time-sensitive and must be completed before the end of the day.
+
+Please use the following banking details:
+
+IBAN: DE89370400440532013000
+Name: Lukas Weber
+
+Confirm once completed.
+
+Thanks,
+John
