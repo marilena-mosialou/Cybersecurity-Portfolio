@@ -1,17 +1,22 @@
 # 📧 Email Security Incident Analysis
 
-This project simulates real-world email threat investigations, focusing on identifying phishing attacks, validating legitimate communications, and analyzing Business Email Compromise (BEC) scenarios.
+**Analyst Summary:**  
+Investigated three real-world email scenarios (legitimate, phishing, and BEC) to identify indicators of compromise, validate infrastructure, and assess risk using SOC-level methodology.
 
-The goal is to demonstrate a structured SOC analyst workflow, combining technical analysis with contextual reasoning to determine email legitimacy and risk.
+A hands-on cybersecurity project simulating real-world email threat investigations.
+
+This project focuses on identifying phishing attacks, validating legitimate communications, and analyzing Business Email Compromise (BEC) scenarios.
+
+The goal is to demonstrate a structured SOC analyst workflow, combining technical analysis with contextual reasoning to assess email legitimacy and risk.
 
 ---
 
 ## 🎯 Project Objectives
 
-- Analyze real and simulated emails for security threats
-- Identify indicators of compromise (IOCs)
-- Differentiate between legitimate and malicious communications
-- Demonstrate investigation methodology used in SOC environments
+- Analyze real and simulated emails for security threats  
+- Identify indicators of compromise (IOCs)  
+- Differentiate between legitimate and malicious communications  
+- Demonstrate investigation methodology used in SOC environments  
 
 ---
 
@@ -30,40 +35,12 @@ This methodology reflects real-world incident response workflows and prioritizes
 
 ---
 
-## 📁 Project Structure
-
-Email-Security-Incident-Analysis/
-│
-├── cases/
-│ ├── case-1-meta-legitimate/
-│ │ ├── analysis.md
-│ │ ├── verdict.md
-│ │ └── evidence/
-│ │
-│ ├── case-2-lidl-phishing/
-│ │ ├── analysis.md
-│ │ ├── verdict.md
-│ │ └── evidence/
-│ │
-│ └── case-3-bec-attack/
-│ ├── analysis.md
-│ ├── verdict.md
-│ └── evidence/
-│
-├── methodology/
-│ └── investigation-process.md
-│
-├── tools/
-│ └── tools-used.md
-│
-└── README.md
-
----
-
 ## 📂 Cases Overview
 
 ### 🟢 Case 1 — Legitimate Email (Meta)
 Analysis of a real email sent via Meta infrastructure.  
+➡️ [View Full Analysis](./cases/case-1-meta-legitimate/analysis.md)
+
 Focus: distinguishing legitimate communication from potential phishing.
 
 **Key takeaway:**  
@@ -72,13 +49,14 @@ Authentication alone does not determine trust — infrastructure and context mat
 ---
 
 ### 🔴 Case 2 — Phishing Email (Lidl Impersonation)
-Analysis of a phishing email using brand impersonation and redirect chains.
+Analysis of a phishing email using brand impersonation and redirect chains.  
+➡️ [View Full Analysis](./cases/case-2-lidl-phishing/analysis.md)
 
 **Techniques identified:**
-- Lookalike domain
-- VPS-based infrastructure
-- Redirect chaining via legitimate services
-- Social engineering incentives
+- Lookalike domain  
+- VPS-based infrastructure  
+- Redirect chaining via legitimate services  
+- Social engineering incentives  
 
 **Key takeaway:**  
 Attackers can bypass detection by abusing trusted platforms and clean reputation domains.
@@ -86,13 +64,14 @@ Attackers can bypass detection by abusing trusted platforms and clean reputation
 ---
 
 ### 🟡 Case 3 — Business Email Compromise (BEC)
-Simulated scenario involving an urgent payment request from a spoofed executive identity.
+Simulated scenario involving an urgent payment request from a spoofed executive identity.  
+➡️ [View Full Analysis](./cases/case-3-bec-attack/analysis.md)
 
 **Techniques identified:**
-- Authority impersonation
-- Urgency and time pressure
-- Lookalike domain
-- No technical payload (pure social engineering)
+- Authority impersonation  
+- Urgency and time pressure  
+- Lookalike domain  
+- No technical payload (pure social engineering)  
 
 **Key takeaway:**  
 BEC attacks rely on human manipulation rather than technical exploits.
@@ -106,17 +85,18 @@ BEC attacks rely on human manipulation rather than technical exploits.
 - **AbuseIPDB** — IP reputation  
 - **VirusTotal** — URL reputation analysis  
 - **URLScan.io** — Behavioral URL analysis  
+- **Google Search (OSINT)** — Domain reputation and infrastructure validation  
 
 ---
 
 ## 📊 Key Skills Demonstrated
 
-- Email header analysis (SPF, DKIM, DMARC)
-- Threat detection and phishing analysis
-- Domain and infrastructure validation
-- Behavioral analysis of malicious URLs
-- Social engineering detection (BEC)
-- Incident reporting and documentation
+- Email header analysis (SPF, DKIM, DMARC)  
+- Threat detection and phishing analysis  
+- Domain and infrastructure validation  
+- Behavioral analysis of malicious URLs  
+- Social engineering detection (BEC)  
+- Incident reporting and documentation  
 
 ---
 
@@ -132,6 +112,7 @@ BEC attacks rely on human manipulation rather than technical exploits.
 ## 🚀 Why This Project Matters
 
 This project demonstrates practical, job-ready skills required for:
+
 - SOC Analyst roles  
 - Threat Detection & Incident Response  
 - Email Security Analysis  
