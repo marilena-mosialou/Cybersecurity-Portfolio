@@ -34,43 +34,43 @@ This methodology reflects real-world incident response workflows and prioritizes
 ## 📂 Cases Overview
 
 ### 🟢 Case 1 — Legitimate Email (Meta)
-Analysis of a real email sent via Meta infrastructure.  
+Analysis of a real email delivered through Meta-controlled infrastructure.  
 ➡️ [View Full Analysis](./cases/case-1-meta-legitimate/analysis.md)
 
-Focus: distinguishing legitimate communication from potential phishing.
+Focus: validating legitimacy despite initial suspicion (unknown subdomain, spam classification).
 
 **Key takeaway:**  
-Authentication alone does not determine trust — infrastructure and context matter.
+Email authentication alone does not establish trust — infrastructure ownership and contextual validation are essential.
 
 ---
 
 ### 🔴 Case 2 — Phishing Email (Lidl Impersonation)
-Analysis of a phishing email using brand impersonation and redirect chains.  
+Analysis of a phishing campaign leveraging brand impersonation and redirect-based evasion techniques.  
 ➡️ [View Full Analysis](./cases/case-2-lidl-phishing/analysis.md)
 
 **Techniques identified:**
-- Lookalike domain  
-- VPS-based infrastructure  
-- Redirect chaining via legitimate services  
-- Social engineering incentives  
+- Deceptive / lookalike domain (typosquatting)  
+- VPS-hosted attacker infrastructure  
+- Redirect chaining via trusted services (Google APIs)  
+- Social engineering through incentives (fake reward)  
 
 **Key takeaway:**  
-Attackers can bypass detection by abusing trusted platforms and clean reputation domains.
+Attackers can evade detection by abusing legitimate platforms and low-reputation domains, making behavioral analysis critical.
 
 ---
 
 ### 🟡 Case 3 — Business Email Compromise (BEC)
-Simulated scenario involving an urgent payment request from a spoofed executive identity.  
+Simulated BEC scenario involving an urgent financial request from a spoofed executive identity.  
 ➡️ [View Full Analysis](./cases/case-3-bec-attack/analysis.md)
 
 **Techniques identified:**
-- Authority impersonation  
+- Authority impersonation (executive identity)  
 - Urgency and time pressure  
-- Lookalike domain  
-- No technical payload (pure social engineering)  
+- Lookalike domain (deceptive naming)  
+- No technical payload — pure social engineering  
 
 **Key takeaway:**  
-BEC attacks rely on human manipulation rather than technical exploits.
+BEC attacks bypass technical defenses by exploiting human trust, making process verification and user awareness essential.
 
 ---
 
