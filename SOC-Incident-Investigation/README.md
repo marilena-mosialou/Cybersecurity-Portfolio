@@ -10,7 +10,7 @@ The objective of the investigation was to reconstruct attacker activity through 
 
 This investigation is based on a separate Active Directory attack simulation lab:
 
-[Active Directory Attack Lab](./Active-Directory-Attack-Lab)
+[Active Directory Attack Lab](../Active-Directory-Attack-Lab)
 
 The investigation focused on identifying evidence of:
 
