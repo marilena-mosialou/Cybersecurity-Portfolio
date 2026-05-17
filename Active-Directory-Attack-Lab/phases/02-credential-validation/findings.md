@@ -138,7 +138,7 @@ Weak password practices remain one of the most common enterprise attack vectors 
 
 ## Offline Password Cracking Attempt
 
-![Hashcat Failed Crack](screenshots/phase2-hashcat-failed-crack.png)
+![Hashcat Failed Crack](screenshots/hashcat-failed-crack.png)
 
 Hashcat was used to perform an offline dictionary attack against the captured NTLMv2 authentication material using the rockyou.txt wordlist.
 
@@ -148,7 +148,7 @@ The password was not recovered during the initial cracking attempt, indicating i
 
 ## Successful SMB Credential Validation
 
-![CME Authentication Success](screenshots/phase2-cme-authentication-success.png)
+![CME Authentication Success](screenshots/cme-authentication-success.png)
 
 CrackMapExec successfully authenticated against internal SMB-enabled systems using the compromised domain credentials.
 
