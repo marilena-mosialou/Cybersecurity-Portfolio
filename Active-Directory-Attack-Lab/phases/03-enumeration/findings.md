@@ -176,7 +176,7 @@ This significantly improves attacker operational awareness and increases the lik
 
 ## BloodHound Data Collection Successful
 
-![BloodHound Collection](screenshots/phase3-bloodhound-data-collection.png)
+![BloodHound Collection](screenshots/bloodhound-data-collection.png)
 
 BloodHound successfully collected Active Directory object data including users, groups, computers, ACLs, and organizational relationships from the domain environment.
 
@@ -184,7 +184,7 @@ BloodHound successfully collected Active Directory object data including users, 
 
 ## Compromised User Group Membership Analysis
 
-![Group Membership](screenshots/phase3-bloodhound-group-membership.png)
+![Group Membership](screenshots/bloodhound-group-membership.png)
 
 BloodHound analysis confirmed that the compromised account operated with standard domain user privileges and belonged only to low-privileged domain groups.
 
@@ -192,7 +192,7 @@ BloodHound analysis confirmed that the compromised account operated with standar
 
 ## Inbound Object Control Relationships
 
-![Inbound Control](screenshots/phase3-bloodhound-inbound-control.png)
+![Inbound Control](screenshots/bloodhound-inbound-control.png)
 
 Analysis identified several inbound object control relationships associated with the compromised account including GenericWrite, WriteDacl, and AddKeyCredentialLink permissions.
 
@@ -200,7 +200,7 @@ Analysis identified several inbound object control relationships associated with
 
 ## No Direct Path to Domain Admins
 
-![No Path to DA](screenshots/phase3-no-path-to-domain-admins.png)
+![No Path to DA](screenshots/no-path-to-domain-admins.png)
 
 Pathfinding analysis confirmed that no direct privilege escalation path existed between the compromised account and the Domain Admins group.
 
