@@ -1,0 +1,35 @@
+title: Suspicious Local Group Enumeration Activity
+id: 3a9f9f44-b1de-4b98-8a1f-group-enumeration
+status: experimental
+description: Detects security-enabled local group enumeration activity commonly associated with attacker reconnaissance and privilege assessment behavior.
+author: Marilena Mosialou
+date: 2026/05/19
+references:
+  - https://attack.mitre.org/techniques/T1069/
+tags:
+  - attack.discovery
+  - attack.t1069
+
+logsource:
+  product: windows
+  service: security
+
+detection:
+  selection:
+    EventID: 4799
+
+  suspicious_groups:
+    GroupName|contains:
+      - Administrators
+      - Remote Desktop Users
+      - Remote Management Users
+      - Distributed COM Users
+
+  condition: selection and suspicious_groups
+
+falsepositives:
+  - Administrative auditing
+  - IT inventory tools
+  - Endpoint management platforms
+
+level: medium
