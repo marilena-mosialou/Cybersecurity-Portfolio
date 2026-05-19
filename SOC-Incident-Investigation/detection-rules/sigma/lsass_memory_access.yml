@@ -1,0 +1,35 @@
+title: Suspicious LSASS Memory Access
+id: 9e2f0f7b-4a0c-4c9d-8c61-lsass-memory-access
+status: stable
+description: Detects suspicious access attempts against the LSASS process commonly associated with credential dumping activity.
+author: Marilena Mosialou
+date: 2026/05/19
+references:
+  - https://attack.mitre.org/techniques/T1003/001/
+tags:
+  - attack.credential_access
+  - attack.t1003.001
+
+logsource:
+  product: windows
+  category: process_access
+
+detection:
+  selection_target:
+    TargetImage|endswith:
+      - '\lsass.exe'
+
+  selection_source:
+    SourceImage|endswith:
+      - '\procdump64.exe'
+      - '\procdump.exe'
+      - '\mimikatz.exe'
+
+  condition: selection_target and selection_source
+
+falsepositives:
+  - Authorized security tools
+  - EDR platforms
+  - Approved forensic tooling
+
+level: critical
