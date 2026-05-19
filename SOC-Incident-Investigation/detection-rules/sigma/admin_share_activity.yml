@@ -1,0 +1,29 @@
+title: Suspicious ADMIN$ Share Usage
+id: 7c3d6e1b-8b92-4f55-9f13-admin-share-activity
+status: experimental
+description: Detects command execution activity referencing the ADMIN$ administrative share commonly associated with lateral movement and remote payload staging.
+author: Marilena Mosialou
+date: 2026/05/19
+references:
+  - https://attack.mitre.org/techniques/T1021/002/
+tags:
+  - attack.lateral_movement
+  - attack.t1021.002
+
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains:
+      - 'ADMIN$'
+
+  condition: selection
+
+falsepositives:
+  - Legitimate remote administration
+  - Software deployment systems
+  - Patch management platforms
+
+level: medium
