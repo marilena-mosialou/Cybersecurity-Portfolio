@@ -72,11 +72,13 @@ index=endpoint sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
 NOT "Sysmon64.exe"
 NOT "csrss.exe"
 NOT "wininit.exe"
+NOT "WindowsPackageManagerServer.exe"
 | rex field=_raw "<Data Name='SourceImage'>(?<SourceImage>[^<]+)</Data>"
 | rex field=_raw "<Data Name='TargetImage'>(?<TargetImage>[^<]+)</Data>"
 | rex field=_raw "<Data Name='GrantedAccess'>(?<GrantedAccess>[^<]+)</Data>"
+| rex field=_raw "<Data Name='SourceUser'>(?<SourceUser>[^<]+)</Data>"
 | stats count values(GrantedAccess) as AccessRights by SourceImage SourceUser
-| where count > 1
+| where count > 0
 | sort - count
 ```
 
