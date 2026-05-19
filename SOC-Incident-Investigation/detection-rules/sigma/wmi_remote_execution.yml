@@ -1,0 +1,37 @@
+title: WMI Remote Command Execution
+id: 8b5f1c29-51d9-4e8f-9d7a-wmi-remote-execution
+status: experimental
+description: Detects suspicious command execution spawned through WMI provider processes commonly associated with lateral movement activity.
+author: Marilena Mosialou
+date: 2026/05/19
+references:
+  - https://attack.mitre.org/techniques/T1047/
+  - https://attack.mitre.org/techniques/T1021/
+tags:
+  - attack.execution
+  - attack.lateral_movement
+  - attack.t1047
+  - attack.t1021
+
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection_parent:
+    ParentImage|endswith:
+      - '\WmiPrvSE.exe'
+
+  selection_child:
+    Image|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+
+  condition: selection_parent and selection_child
+
+falsepositives:
+  - SCCM deployments
+  - Remote administration activity
+  - Enterprise automation frameworks
+
+level: high
