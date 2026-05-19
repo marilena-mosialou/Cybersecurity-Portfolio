@@ -72,7 +72,9 @@ index=endpoint sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
 | rex field=_raw "<Data Name='Image'>(?<Image>[^<]+)</Data>"
 | rex field=_raw "<Data Name='ParentImage'>(?<ParentImage>[^<]+)</Data>"
 | rex field=_raw "<Data Name='CommandLine'>(?<CommandLine>[^<]+)</Data>"
+| rex field=_raw "<Data Name='User'>(?<User>[^<]+)</Data>"
 | stats count values(CommandLine) as Commands by host ParentImage User
+| where count > 0
 | sort - count
 ```
 
