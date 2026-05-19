@@ -1,0 +1,29 @@
+title: Suspicious Kerberos RC4 Service Ticket Activity
+id: 5b7f2c4a-1d93-4f2a-8f45-kerberoasting-activity
+status: experimental
+description: Detects RC4-encrypted Kerberos service ticket requests potentially associated with Kerberoasting attacks targeting service accounts.
+author: Marilena Mosialou
+date: 2026/05/19
+references:
+  - https://attack.mitre.org/techniques/T1558/003/
+tags:
+  - attack.credential_access
+  - attack.t1558.003
+
+logsource:
+  product: windows
+  service: security
+
+detection:
+  selection:
+    EventID: 4769
+    TicketEncryptionType: '0x17'
+
+  condition: selection
+
+falsepositives:
+  - Legacy Kerberos configurations
+  - Older applications requiring RC4
+  - Misconfigured service accounts
+
+level: high
