@@ -2,37 +2,84 @@
 
 ## 📌 Overview
 
-This project documents a full Security Operations Center (SOC) investigation of a simulated Active Directory compromise conducted inside a controlled lab environment.
+This project documents a full Security Operations Center (SOC) investigation of a simulated Active Directory compromise conducted within a controlled lab environment.
 
-The objective of the investigation was to reconstruct attacker activity through Windows Security Logs and Sysmon telemetry using Splunk SIEM.
+The investigation focused on reconstructing adversary activity through:
 
-## Related Project
+- Windows Security Logs
+- Sysmon telemetry
+- Splunk SIEM correlation
+- authentication analysis
+- endpoint telemetry investigation
+- MITRE ATT&CK mapping
 
-This investigation is based on a separate Active Directory attack simulation lab:
+The project demonstrates practical blue-team methodology involving:
 
-[Active Directory Attack Lab](../Active-Directory-Attack-Lab)
+- authentication correlation
+- threat hunting
+- lateral movement analysis
+- credential access detection
+- Kerberos abuse investigation
+- detection engineering
+- SOC-oriented incident analysis
 
-The investigation focused on identifying evidence of:
+The investigation reconstructed a multi-stage compromise involving:
 
-- Initial credential abuse
-- Domain enumeration activity
-- Lateral movement attempts
-- Credential dumping behavior
-- Kerberos abuse
-- Remote administration activity
-- Indicators of domain compromise
-
-The environment consisted of:
-
-- Windows Domain Controller
-- Windows client workstation
-- Kali Linux attacker machine
-- Splunk SIEM
-- Sysmon with Olaf Hartong configuration
+- suspicious remote authentication activity
+- domain enumeration behavior
+- WMI-based remote execution
+- administrative share abuse
+- LSASS credential dumping
+- Kerberoasting activity
+- indicators of privileged domain compromise
 
 ---
 
-# ⚙️ Environment
+# 🎯 Project Objectives
+
+The primary goals of this project were to:
+
+- simulate realistic Active Directory attack behavior
+- investigate adversary activity using Splunk SIEM
+- correlate authentication and endpoint telemetry
+- reconstruct attacker behavior across multiple systems
+- develop reusable SOC detection analytics
+- map observed activity to MITRE ATT&CK techniques
+- demonstrate defensive investigation methodology
+
+The project intentionally emphasizes:
+
+- blue-team investigation workflows
+- detection engineering
+- telemetry correlation
+- behavioral analysis
+- SOC operational methodology
+
+rather than offensive exploitation.
+
+---
+
+# 🔗 Related Project
+
+This investigation is based on a separate Active Directory attack simulation lab focused on offensive attack execution:
+
+[Active Directory Attack Lab](../Active-Directory-Attack-Lab)
+
+The related project documents:
+
+- attack execution workflows
+- adversary tooling usage
+- privilege escalation techniques
+- Active Directory attack paths
+- offensive security methodology
+
+This repository focuses exclusively on the defensive SOC investigation and detection engineering perspective.
+
+---
+
+# 🏗️ Environment Architecture
+
+## Lab Environment
 
 | Component | Description |
 |---|---|
@@ -41,400 +88,209 @@ The environment consisted of:
 | Sysmon Configuration | Olaf Hartong Sysmon Modular |
 | Domain Controller | SOLARIS-DC-01 |
 | Workstation | SOLARIS-PC-01 |
-| Attacker Host | Kali Linux |
+| Attacker System | Kali Linux |
 | Domain | SOLARIS.LOCAL |
 
 ---
 
-# 🔍 Investigation Methodology
+# 📂 Project Structure
 
-The investigation followed a SOC-oriented workflow:
+```text
+SOC-Incident-Investigation/
+│
+├── architecture/
+│   ├── soc-lab-topology.png
+│   ├── attack-path-flow.png
+│   └── telemetry-flow.png
+│
+├── investigation-phases/
+│   ├── 01-authentication-correlation-analysis/
+│   ├── 02-domain-enumeration-analysis/
+│   ├── 03-wmi-lateral-movement-analysis/
+│   ├── 04-credential-dumping-analysis/
+│   ├── 05-kerberos-abuse-analysis/
+│   └── 06-domain-compromise-assessment/
+│
+├── detection-rules/
+│   ├── README.md
+│   ├── splunk/
+│   └── sigma/
+│
+├── lessons-learned/
+│   ├── telemetry-gaps.md
+│   ├── detection-improvements.md
+│   └── hardening-recommendations.md
+│
+├── mitre-attack-mapping.md
+│
+└── README.md
+```
+
+---
+
+# 🔍 Investigation Workflow
+
+The investigation followed a structured SOC-oriented methodology:
 
 1. Identify suspicious authentication activity
-2. Correlate authentication across hosts
-3. Investigate privilege escalation attempts
-4. Identify lateral movement behavior
-5. Detect credential dumping activity
-6. Analyze Kerberos abuse
-7. Investigate evidence of domain compromise
+2. Correlate authentication events across systems
+3. Investigate domain reconnaissance behavior
+4. Detect lateral movement activity
+5. Identify credential dumping behavior
+6. Analyze Kerberos abuse activity
+7. Assess indicators of domain compromise
 8. Map findings to MITRE ATT&CK techniques
-
-The investigation focused on correlating endpoint and authentication telemetry to reconstruct attacker behavior across the environment.
+9. Develop reusable detection analytics
+10. Document defensive improvement opportunities
 
 ---
 
-# 🧾 Data Sources
+# 🧠 Investigation Phases
 
-## 📊 Windows Security Logs
-
-Primary Event IDs investigated:
-
-| Event ID | Description |
+| Phase | Focus Area |
 |---|---|
-| 4624 | Successful logon |
-| 4625 | Failed logon |
-| 4648 | Explicit credential logon |
-| 4672 | Special privileges assigned |
-| 4688 | Process creation |
-| 4769 | Kerberos service ticket request |
-| 4799 | Local group enumeration |
-| 5145 | SMB share access |
+| Phase 1 | Authentication Correlation Analysis |
+| Phase 2 | Domain Enumeration Analysis |
+| Phase 3 | WMI Lateral Movement Analysis |
+| Phase 4 | Credential Dumping Analysis |
+| Phase 5 | Kerberos Abuse Analysis |
+| Phase 6 | Domain Compromise Assessment |
+
+Each investigation phase contains:
+
+- overview documentation
+- detection queries
+- findings analysis
+- supporting screenshots
+- telemetry correlation evidence
 
 ---
 
-## Sysmon Telemetry
+# 🛡️ Detection Engineering
 
-Primary Sysmon Event IDs investigated:
+The project includes a dedicated detection engineering section containing:
 
-| Event ID | Description |
-|---|---|
-| 1 | Process creation |
-| 2 | File creation time changed |
-| 3 | Network connection |
-| 7 | Image loaded |
-| 10 | Process access |
-| 11 | File creation |
-| 13 | Registry modification |
+## Splunk Detection Analytics
 
-Sysmon telemetry became critical during later investigation phases, particularly for detecting LSASS memory access and WMI-based remote execution activity that was not fully visible through standard Windows Security logs alone.
+Reusable SOC detection content for:
 
----
-
-# 🧠 MITRE ATT&CK Mapping
-
-| Phase | Technique | ATT&CK ID |
-|---|---|---|
-| Credential Access | OS Credential Dumping | T1003 |
-| Discovery | Account Discovery | T1087 |
-| Discovery | Permission Group Discovery | T1069 |
-| Discovery | Domain Trust Discovery | T1482 |
-| Lateral Movement | SMB/Windows Admin Shares | T1021.002 |
-| Lateral Movement | Windows Management Instrumentation | T1047 |
-| Credential Access | Kerberoasting | T1558.003 |
-| Credential Access | Steal or Forge Kerberos Tickets | T1558 |
-| Credential Access | NTDS | T1003.003 |
-
----
-
-# 🚨 Phase 1 — Suspicious Authentication Activity
-
-## 🎯 Objective
-
-Identify suspicious authentication behavior associated with compromised credentials.
-
-## 🔍 Findings
-
-Multiple successful and failed authentication attempts were identified originating from the attacker IP:
-
-```spl
-index=endpoint sourcetype="WinEventLog:Security"
-(EventCode=4624 OR EventCode=4625)
-Source_Network_Address="192.168.10.250"
-| table _time ComputerName Account_Name EventCode Logon_Type Source_Network_Address
-```
-
-## 🚨 Observations
-
-- Multiple Logon Type 3 events identified
-- Authentication activity observed against:
-  - SOLARIS-DC-01
-  - SOLARIS-PC-01
-- Failed authentication attempts preceded successful access
-
-## 💡 Security Insight
-
-This behavior is consistent with remote SMB authentication attempts and credential validation activity.
-
----
-
-# 🕵️ Phase 2 — Domain Enumeration
-
-## 🎯 Objective
-
-Determine whether the compromised account performed Active Directory reconnaissance.
-
-## 🔍 Findings
-
-Group enumeration activity was identified for user p.olson.
-
-```spl
-index=endpoint EventCode=4799 "p.olson"
-| table _time Group_Name Process_Name Message
-```
-
-## 🚨 Observations
-
-The compromised account enumerated:
-
-- Administrators
-- Remote Desktop Users
-- Remote Management Users
-- Distributed COM Users
-
-Additional enumeration activity involved:
-
-- `net1.exe`
-- `RuntimeBroker.exe`
-
-## 💡 Security Insight
-
-This behavior is consistent with attacker reconnaissance and privilege assessment within Active Directory environments.
-
----
-
-# 🌐 Phase 3 — Lateral Movement Attempts
-
-## 🎯 Objective
-
-Identify evidence of remote execution and lateral movement behavior.
-
-## 🔍 Findings
-
-Windows Security logs revealed repeated remote network logons originating from the attacker system.
-
-```spl
-index=endpoint sourcetype="WinEventLog:Security"
-EventCode=4624
-Account_Name="Administrator"
-Source_Network_Address="192.168.10.250"
-| table _time ComputerName Logon_Type Source_Network_Address
-```
-
-## 🚨 Observations
-
-- Repeated Logon Type 3 events observed
-- Remote network logons originated from:
-  - `192.168.10.250`
-- Activity targeted:
-  - `SOLARIS-DC-01`
-
-## WMI-Based Remote Execution Evidence
-
-Sysmon telemetry revealed remote WMI execution behavior.
-
-```spl
-index=endpoint sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
-"ADMIN$"
-"cmd.exe"
-"WmiPrvSE.exe"
-| table _time host _raw
-```
-
-## Critical Evidence
-
-Observed command:
-
-```cmd
-cmd.exe /Q /c cd \ 1> \\127.0.0.1\ADMIN$\__1776842917.6134377 2>&1
-```
-Parent Process:
-
-```
-C:\Windows\System32\wbem\WmiPrvSE.exe
-```
-
-## 💡 Security Insight
-
-This behavior strongly aligns with Impacket `wmiexec.py` remote command execution techniques.
-
-The presence of:
-
-- `WmiPrvSE.exe`
-- `ADMIN$`
-- remote command execution
-- network authentication events
-
-provides strong evidence of lateral movement activity.
-
----
-
-# 🔑 Phase 4 — Credential Dumping (LSASS Access)
-
-## 🎯 Objective
-
-Identify evidence of credential dumping and LSASS memory access.
-
-## 🔍 Findings
-
-Sysmon ProcessAccess telemetry revealed suspicious access to LSASS memory from ProcDump.
-
-```spl
-index=endpoint sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
-("lsass.exe" OR "procdump64.exe")
-| rex "EventID>(?<EventID>\d+)"
-| rex "Image'>(?<Image>[^<]+)"
-| rex "CommandLine'>(?<CommandLine>[^<]+)"
-| rex "ParentImage'>(?<ParentImage>[^<]+)"
-| rex "User'>(?<User>[^<]+)"
-| rex "SourceImage'>(?<SourceImage>[^<]+)"
-| rex "TargetImage'>(?<TargetImage>[^<]+)"
-| rex "GrantedAccess'>(?<GrantedAccess>[^<]+)"
-| rex "SourceUser'>(?<SourceUser>[^<]+)"
-| eval Process=coalesce(Image,SourceImage)
-| eval Account=coalesce(User,SourceUser)
-| table _time host EventID Process TargetImage GrantedAccess CommandLine ParentImage Account
-| sort _time
-```
-
-## Critical Evidence
-
-ProcDump Execution
-
-```
-"C:\Users\Public\procdump64.exe" -accepteula -ma lsass.exe C:\Users\Public\lsass.dmp
-```
-
-LSASS Memory Access
-
-```
-TargetImage: C:\WINDOWS\system32\lsass.exe
-GrantedAccess: 0x1fffff
-```
-
-Parent Process
-
-```
-ParentImage:
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-```
-
-## 💡 Security Insight
-
-The investigation confirmed:
-
-- Execution of ProcDump
-- Direct access to LSASS memory
-- High privilege access rights
-- Creation of LSASS dump artifacts
-
-This behavior is strongly associated with credential dumping operations.
-
----
-
-# 🎟️ Phase 5 — Kerberoasting Activity
-
-## 🎯 Objective
-
-Identify suspicious Kerberos service ticket requests.
-
-## 🔍 Findings
-
-Windows Security Event ID 4769 revealed Kerberos service ticket requests targeting the svc_backup service account.
-
-```spl
-index=endpoint sourcetype="WinEventLog:Security"
-EventCode=4769
-| table _time ComputerName Account_Name Service_Name Ticket_Encryption_Type Client_Address
-```
-
-## 🚨 Observations
-
-```
-Service_Name: svc_backup
-Client_Address: ::ffff:192.168.10.250
-Ticket_Encryption_Type: 0x17
-```
-
-## 💡 Security Insight
-
-This behavior aligns with Kerberoasting activity involving service accounts configured with SPNs.
-
-The activity indicates:
-
-- Service ticket extraction
-- Potential offline password cracking attempts
-- Exposure of privileged service accounts
-
----
-
-# 👑 Phase 6 — Suspected Domain Compromise Activity
-
-## 🎯 Objective
-
-Determine whether attacker activity escalated to domain-wide compromise.
-
-## 🔍 Findings
-
-Repeated successful remote administrative authentications were observed using:
-
-- Administrator
-- svc_backup
-
-originating from:
-
-```
-192.168.10.250
-```
-
-## 🚨 Observations
-
-- Repeated remote network logons
-- Administrative account usage
-- Lateral movement into Domain Controller
-- Service account authentication activity
-
-## 💡 Security Insight
-
-The combination of:
-
-- credential dumping,
-- Kerberoasting,
-- remote administration activity,
-- and repeated privileged logons
-
-indicates a high likelihood of successful privileged domain access and potential domain-wide credential compromise.
-
-While direct execution telemetry for `secretsdump.py` or explicit NTDS extraction commands was not fully captured, the investigation identified strong behavioral indicators consistent with domain credential extraction activity.
-
----
-
-# 🎯 Key Detection Opportunities
-
-| Activity | Detection Opportunity |
-|---|---|
-| Remote WMI execution | WmiPrvSE.exe spawning cmd.exe |
-| Credential dumping | Sysmon Event ID 10 |
-| Kerberoasting | Event ID 4769 |
-| Suspicious SMB authentication | Event ID 4624 Type 3 |
-| Administrative share usage | ADMIN$ references |
-| PowerShell spawning ProcDump | Sysmon Event ID 1 |
-
----
-
-# ⚠️ Visibility Gaps Identified
-
-The investigation also highlighted important telemetry limitations.
-
-## Missing or Limited Visibility
-
-- Direct secretsdump.py telemetry
-- Explicit NTDS.dit extraction commands
-- SMB file extraction artifacts
-- Full command-line visibility in some Security Events
-- Lack of PowerShell Script Block Logging limited visibility into attacker PowerShell activity
-
-## Lessons Learned
-
-The project demonstrated why:
-
-- Sysmon ProcessAccess events are critical
-- Advanced endpoint telemetry significantly improves investigations
-- Correlation across multiple log sources is essential in SOC operations
-
----
-
-# ✅ Conclusion
-
-This investigation reconstructed a multi-stage Active Directory compromise through Splunk-based telemetry analysis.
-
-The investigation successfully identified:
-
-- Suspicious authentication activity
-- Domain enumeration behavior
-- Lateral movement attempts
-- Remote WMI execution
-- LSASS credential dumping
+- suspicious authentication activity
+- privileged group enumeration
+- WMI remote execution
+- ADMIN$ share abuse
+- LSASS memory access
 - Kerberoasting activity
-- Indicators of domain compromise
 
-The project demonstrates practical SOC investigation methodology, detection engineering, and telemetry correlation skills relevant to real-world enterprise environments.
+## Sigma Rules
+
+Vendor-agnostic detection rules aligned to:
+
+- MITRE ATT&CK techniques
+- behavioral analytics
+- credential access monitoring
+- lateral movement detection
+- Active Directory attack activity
+
+The detection engineering content was developed directly from adversary behaviors identified during the investigation lifecycle.
+
+---
+
+# 📊 MITRE ATT&CK Mapping
+
+The investigation maps observed adversary behaviors to multiple MITRE ATT&CK techniques including:
+
+| ATT&CK ID | Technique |
+|---|---|
+| T1078 | Valid Accounts |
+| T1069 | Permission Groups Discovery |
+| T1047 | Windows Management Instrumentation |
+| T1021.002 | SMB/Windows Admin Shares |
+| T1003.001 | OS Credential Dumping: LSASS Memory |
+| T1558.003 | Kerberoasting |
+| T1558 | Steal or Forge Kerberos Tickets |
+
+Detailed ATT&CK mappings are documented in:
+
+```text
+mitre-attack-mapping.md
+```
+
+---
+
+# ⚠️ Lessons Learned
+
+The project also documents defensive improvement opportunities identified throughout the investigation, including:
+
+- telemetry visibility gaps
+- detection engineering improvements
+- authentication monitoring enhancements
+- Kerberos monitoring recommendations
+- Active Directory hardening guidance
+- SOC operational lessons learned
+
+These findings are documented within:
+
+```text
+lessons-learned/
+```
+
+---
+
+# 🛠️ Tools and Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Splunk Enterprise | SIEM and log analysis |
+| Sysmon | Endpoint telemetry collection |
+| Windows Security Logs | Authentication and security monitoring |
+| Kali Linux | Adversary simulation |
+| MITRE ATT&CK | Adversary behavior mapping |
+| Sigma | Vendor-agnostic detection engineering |
+| Sysmon Modular | Advanced Sysmon configuration |
+| Active Directory | Enterprise identity infrastructure |
+
+---
+
+# 📚 References
+
+- MITRE ATT&CK Framework
+- SigmaHQ Detection Rules
+- Olaf Hartong Sysmon Modular Configuration
+- Splunk Documentation
+- Microsoft Security Auditing Documentation
+
+---
+
+# 🎯 Key Skills Demonstrated
+
+This project demonstrates practical experience with:
+
+- SOC investigations
+- Splunk SIEM analysis
+- threat hunting
+- authentication correlation
+- endpoint telemetry analysis
+- detection engineering
+- Sigma rule development
+- MITRE ATT&CK mapping
+- Kerberos abuse analysis
+- Active Directory security investigations
+- incident documentation
+- defensive security analysis
+
+---
+
+# ✅ Final Assessment
+
+This project demonstrates a practical blue-team investigation workflow for analyzing and reconstructing a multi-stage Active Directory compromise using Splunk SIEM and endpoint telemetry correlation.
+
+The investigation emphasizes:
+
+- defensive security methodology
+- behavioral analytics
+- detection engineering
+- SOC operational workflows
+- ATT&CK-aligned analysis
+- telemetry-driven investigations
+
+The project was designed to reflect realistic SOC investigation practices and defensive security engineering methodologies commonly used within enterprise environments.
