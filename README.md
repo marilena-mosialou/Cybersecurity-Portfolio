@@ -1,75 +1,253 @@
-# Cybersecurity Portfolio – Marilena Mosialou
+# 🛡️ Marilena Mosialou | Cybersecurity Portfolio
 
-This repository showcases hands-on cybersecurity labs and real-world attack simulations performed in controlled environments.
+**Cybersecurity Analyst | SOC Investigations | Threat Detection | Active Directory Security | Splunk**
 
-## 🔐 Skills Demonstrated
-- Active Directory Security & Attacks
-- Incident Response & Log Analysis
-- Network Traffic Analysis (Wireshark, TCPDump)
-- Vulnerability Scanning (Nessus, OpenVAS)
-- Web Application Security Testing (OWASP Top 10)
-- Phishing Analysis
+Cybersecurity professional with hands-on experience in SOC investigations, malware traffic analysis, phishing investigations, and Active Directory attack simulations.
 
-## 🧰 Tools & Technologies
+CompTIA Security+ and Google Cybersecurity certified, with practical experience using Splunk, Wireshark, Sysmon, and Zeek to investigate suspicious activity, analyze Indicators of Compromise (IOCs), and document incident findings.
 
-**Operating Systems:**
-- Windows Server
-- Kali Linux
+Background in SLA-driven technical support, bringing strong incident triage, troubleshooting, escalation handling, and operational coordination capabilities to fast-paced security environments.
 
-**Security Tools:**
-- Wireshark
-- Burp Suite
-- Nessus / OpenVAS
-- BloodHound
-- Mimikatz
-- Impacket
+---
 
-**SIEM & Logging:**
-- Splunk / ELK Stack
+## 🏆 Certifications
 
-**Scripting:**
-- PowerShell
-- Bash
+<div align="center">
+  <table align="center">
+    <tr>
+      <td align="center">
+        <a href="https://www.credly.com/badges/b7b4a050-69c8-4625-b114-4c248c83ba93/public_url">
+          <img src="images/comptia-securityplus-badge.png" alt="CompTIA Security+" width="180">
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://www.credly.com/badges/b0b9c9e6-3a4e-4308-b52c-c9c745a329f8/public_url">
+          <img src="images/google-cybersecurity-certificate-badge.png" alt="Google Cybersecurity Professional Certificate" width="180">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><strong>CompTIA Security+</strong></td>
+      <td align="center"><strong>Google Cybersecurity Professional Certificate</strong></td>
+    </tr>
+  </table>
+  
+  <br>
+  
+  <a href="https://www.linkedin.com/in/marilena-mosialou-8b5506229">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin" alt="LinkedIn">
+  </a>
+</div>
 
-## 📂 Projects
+---
+
+## 👨‍💻 About Me
+
+I recently built and documented multiple security-focused lab environments covering:
+
+- Active Directory attacks
+- Detection engineering
+- Malware traffic analysis
+- Phishing investigations
+- SIEM-based investigations
+- Threat hunting workflows
+
+Currently seeking opportunities in:
+
+- Security Operations Center (SOC)
+- Security Analysis
+- Incident Response
+- Threat Detection
+- Cybersecurity Operations
+
+---
+
+## 🔑 Core Competencies
+
+### Security Operations & Incident Response
+
+- Security Incident Investigation
+- Threat Hunting
+- IOC Analysis & Correlation
+- Incident Triage
+- Incident Documentation
+- Threat Intelligence Correlation
+- Security Monitoring
+- Incident Response Methodology
+
+### Detection Engineering & Monitoring
+
+- Detection Engineering
+- SIEM Investigation
+- Log Correlation
+- Authentication Analysis
+- Endpoint Telemetry Analysis
+- MITRE ATT&CK Mapping
+- Sigma Rule Development
+
+### Active Directory Security
+
+- Active Directory Enumeration
+- Kerberoasting
+- Credential Access Techniques
+- Authentication Abuse Analysis
+- Attack Path Analysis
+- Privilege Escalation Concepts
+
+### Network Security
+
+- Malware Traffic Analysis
+- Packet Analysis
+- DNS Investigation
+- TLS Analysis
+- Command-and-Control Detection
+- Network-Based IOC Extraction
+
+### Email Security
+
+- SPF / DKIM / DMARC Analysis
+- Header Analysis
+- URL Investigation
+- Business Email Compromise (BEC) Analysis
+- Phishing Investigation
+
+---
+
+## 🛠️ Technologies & Tools
+
+| Category | Technologies |
+|-----------|-------------|
+| SIEM & Logging | Splunk Enterprise, Sysmon, Zeek, Windows Event Logs |
+| Security Tools | Wireshark, BloodHound, Impacket, Responder, CrackMapExec, John the Ripper |
+| Threat Intelligence | VirusTotal, URLScan.io, AbuseIPDB, WHOIS |
+| Operating Systems | Windows Server, Windows 11, Kali Linux, Ubuntu Linux |
+| Scripting & Automation | PowerShell, Bash |
+
+---
+
+## 🚀 Featured Projects
 
 ### 🔴 Active Directory Attack Lab
-Simulating real-world Active Directory attacks including privilege escalation and credential abuse.  
+
+**End-to-End Enterprise Attack Simulation**
+
+Built a realistic Active Directory environment simulating a complete attack lifecycle from initial access through full domain compromise. The project demonstrates attacker methodology, credential abuse, attack path analysis, and defensive visibility through centralized logging and monitoring.
+
+#### Key Skills
+
+- Active Directory Enumeration
+- LLMNR/NBT-NS Poisoning
+- Credential Harvesting
+- BloodHound Analysis
+- Kerberoasting
+- LSASS Credential Dumping
+- SMB Administrative Access
+- Attack Path Analysis
+- Security Monitoring
+
 ➡️ [View Project](./Active-Directory-Attack-Lab)
 
-### 🟡 SOC Incident Investigation
-Investigating security events using logs and identifying malicious activity.  
+---
+
+### 🔵 SOC Incident Investigation
+
+**Active Directory Compromise Investigation Using Splunk**
+
+Conducted a full SOC investigation of a simulated Active Directory compromise using Splunk SIEM, Sysmon telemetry, and Windows Security Logs. Reconstructed attacker activity, identified credential access behavior, analyzed lateral movement, and developed detection opportunities.
+
+#### Key Skills
+
+- Threat Hunting
+- Authentication Correlation
+- Endpoint Telemetry Analysis
+- Detection Engineering
+- Kerberos Investigation
+- MITRE ATT&CK Mapping
+- Incident Documentation
+
 ➡️ [View Project](./SOC-Incident-Investigation)
 
-### 🔵 Network Traffic Analysis
-Analyzing packet captures to detect suspicious behavior.  
-➡️ [View Project](./Network-Traffic-Analysis)
+---
 
-### 🟠 Vulnerability Scanning Lab
-Identifying and analyzing vulnerabilities using scanning tools.  
-➡️ [View Project](./Vulnerability-Scanning-Lab)
+### 🟠 SOC Email Threat Analysis
 
-### 🟣 Web App Security Testing
-Testing applications against OWASP Top 10 vulnerabilities.  
-➡️ [View Project](./Web-App-Security-Testing)
+**Phishing & Business Email Compromise Investigations**
 
-### ⚪ Email Threat Analysis Lab
-Investigating real-world email threats including phishing and business email compromise (BEC), using header analysis, domain validation, and threat intelligence tools to identify indicators of compromise and assess risk.  
-➡️ [View Project](./Email-Security-Incident-Analysis)
+Performed multiple email security investigations involving phishing campaigns, trusted SaaS abuse, cloud-hosted phishing infrastructure, open redirect abuse, and Business Email Compromise (BEC) scenarios using structured SOC investigation methodologies.
+
+#### Key Skills
+
+- SPF / DKIM / DMARC Analysis
+- Header Analysis
+- IOC Extraction
+- Threat Intelligence Correlation
+- URL Investigation
+- Social Engineering Assessment
+- Risk Classification
+
+➡️ [View Project](./SOC-Email-Threat-Analysis)
 
 ---
 
-## 🎯 Goal
-To demonstrate practical, job-ready cybersecurity skills through hands-on labs and documented attack scenarios.
+### 🟡 Malware Traffic Analysis
+
+**NetSupport RAT & StealC Investigation**
+
+Analyzed malware-related network traffic and Zeek logs to identify command-and-control infrastructure, suspicious domains, encrypted communications, and indicators of compromise associated with a NetSupport RAT and StealC infection chain.
+
+#### Key Skills
+
+- Network Traffic Analysis
+- DNS Investigation
+- Command-and-Control Detection
+- IOC Extraction
+- Zeek Analysis
+- Packet Inspection
+
+➡️ [View Project](./Malware-Traffic-Analysis)
 
 ---
 
-## 🚀 What Makes This Portfolio Different
+## 📚 Methodologies & Frameworks
 
-- Focus on both **offensive (attacks)** and **defensive (detection & mitigation)** techniques
-- Includes **real-world attack simulations** in controlled lab environments
-- Emphasis on **log analysis and detection strategies**
-- Detailed documentation with **step-by-step execution and screenshots**
+Throughout these projects I apply industry-recognized methodologies and frameworks including:
 
-## 📫 Contact
-- LinkedIn: link
+- MITRE ATT&CK Framework
+- Incident Response Lifecycle
+- Threat Hunting Methodologies
+- IOC-Based Investigation
+- Active Directory Security Assessment
+- Detection Engineering Principles
+- Email Threat Investigation Workflows
+- Security Operations Center (SOC) Methodologies
+
+---
+
+## 📈 What This Portfolio Demonstrates
+
+This portfolio highlights practical, hands-on experience with:
+
+- SOC Investigations
+- Threat Detection & Analysis
+- Incident Response Workflows
+- Active Directory Security
+- Detection Engineering
+- Malware Traffic Analysis
+- Email Threat Analysis
+- SIEM Investigations
+- Threat Intelligence Correlation
+- Security Documentation & Reporting
+
+Each project is documented with findings, evidence, screenshots, methodologies, attack analysis, detection opportunities, and remediation recommendations to reflect real-world cybersecurity workflows.
+
+---
+
+## 📫 Connect With Me
+
+* **Email:** [mosialou.marilena@gmail.com](mailto:mosialou.marilena@gmail.com)
+* **LinkedIn:** [Marilena Mosialou](https://www.linkedin.com/in/marilena-mosialou-8b5506229)
+* **Credly:** [View My Verified Badges](https://www.credly.com/users/marilena-mosialou)
+
+---
+
+> *All projects were performed within controlled lab environments for educational, defensive security, and cybersecurity portfolio development purposes.*
